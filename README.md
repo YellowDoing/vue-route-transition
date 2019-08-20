@@ -4,6 +4,12 @@
 
 ![image](https://note.youdao.com/yws/api/personal/file/DB4A718969DB4A8CAFCBF65CA9E1F982?method=download&shareKey=1d6623975889d5a673f475c40b9fe0d5)
 
+
+微信公众号《IT独立开发者》,帮助程序员拓展产品、运营、设计等思维能力，开发独立产品，致力成为自由职业者，实现财富自由。
+扫码关注
+![image](https://note.youdao.com/yws/api/personal/file/0F213217CFF54BAB8287E5C9FA431B75?method=download&shareKey=49e6f77a81a45ba31205084d22a9eb9c)
+
+
 使用Vue `<transition>` 组件过渡
 
 ```

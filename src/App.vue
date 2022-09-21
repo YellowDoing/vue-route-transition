@@ -1,64 +1,62 @@
-<template>
+<template >
+
   <div id="app">
-    <transition :name="this.$store.routeAction">
-      <router-view/>
-    </transition>
+       <Transition :name="action">
+         <KeepAlive>
+           <component :is="currentView[currentView.length -1]"/>
+         </KeepAlive>
+       </Transition>
   </div>
+
 </template>
 
-<script>
-export default {
-  // data:function(){
-  //   return {
-  //     routeAction:this.$store.routeAction
-  //   }
-  // }
-}
-</script>
+<script setup>
+ import {storeToRefs} from "pinia/dist/pinia";
+ import {useRouterStore} from "@/stores";
+ import {watchEffect} from "vue";
 
+const currentViewStore = useRouterStore();
+const {currentView,action} = storeToRefs(currentViewStore)
+
+ watchEffect(()=>{
+   console.log(action.value)
+ })
+
+
+</script>
 
 <style>
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-
-
+  margin: 0;
 }
+
 * {
   margin: 0;
   padding: 0;
 }
 
-.push-enter-active,.push-leave-active
-, .pop-enter-active,.pop-leave-active{
-  transition: all 0.4s;
-}
-
-.push-leave-to{
-transform: translate(-20%,0);
-}
-
-.push-enter {
-  transform: translate(100%, 0);
-}
 .push-enter-active {
-  z-index: 10;
+  transition: all 0.4s ease;
+  z-index: 1;
 }
-.push-leave-active {
+.push-enter-from{
+  transform: translateX(100%);
+}
+
+.push-leave-active{
+  transition: all 0.4s;
   z-index: 0;
 }
-.pop-leave-active {
-  transform: translate(100%, 0);
-  z-index: 11;
-}
 
-.pop-enter{
-  transform: translate(-20%,0);
+.pop-leave-active {
+  transform: translateX(100%);
+  transition: all 0.4s ease;
+  z-index: 1;
 }
 
 </style>
-
-
